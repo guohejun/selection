@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .editable-area {
+      width: 90%;
+      padding: 20px 50px 0;
+      margin: 80px auto 40px;
+      background-color: #f5f5f5;
+    }
+    .editable-area .editable {
+      width: 800px;
+      height: 100px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      background-color: #fff;
+    }
+    .editable-area .submit-row {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section class="editable-area">
+    <p class="example-text">文本1，文本2，文本3，文本4，文博</p>
+    <div class="editable editable1" contenteditable="true"></div>
+    <div class="editable editable2" contenteditable="true"></div>
+    <div class="submit-row">
+      <button class="btn">选中输入框内所有内容</button>
+      <button class="btn">清除页面所有选中区域</button>
+      <button class="btn">将示例文本插入到输入框并全选</button>
+    </div>
+  </section>
+</body>
+<script>
+  var editBox = document.getElementsByClassName("editable1")[0];
+  var editBox2 = document.getElementsByClassName("editable2")[0];
+  var btn1 = document.getElementsByClassName("btn")[0];
+  editBox.innerHTML = "Hello " +"<br>" + " world！";
+  editBox2.innerHTML = "Hello2 " +"<br>" + " world！";
+  btn1.onclick=function () {
+  	console.log(111)
+	  window.getSelection().selectAllChildren(editBox);
+	  window.getSelection().selectAllChildren(editBox2);
+  }
+</script>
+</html>
