@@ -1,6 +1,7 @@
 import "./assets/css/common.css"
 import {BUTTON_MAP} from "./assets/js/config"
-const METHODS = () => {import "./assets/js/methods"};
+import METHODS from "./assets/js/methods";
+import img from "./assets/images/beauty.jpg";
 
 
 let editBox = document.getElementsByClassName("editable1")[0];
@@ -24,7 +25,7 @@ btnList.forEach(btn => {
 		funcName();
 	}
 });
-//
+
 // setTimeout(() => {
 // 	import(/* webpackChunkName: "methods" */ "./assets/js/methods").then(
 // 		METHODS => {
@@ -38,3 +39,8 @@ btnList.forEach(btn => {
 // 		}
 // 	)
 // }, 5000);
+
+// let imagesDom = document.getElementsByClassName("images")[0];
+// let imgItem = document.createElement("img");
+// imgItem.setAttribute("src", img);
+// imagesDom.appendChild(imgItem);

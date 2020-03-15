@@ -1,15 +1,15 @@
 export default {
 	onSelectContent: () => {
-		var editBox = document.getElementsByClassName("editable1")[0];
-		var range = document.createRange();
+		let editBox = document.getElementsByClassName("editable1")[0];
+		let range = document.createRange();
 		range.selectNode(editBox);
 		window.getSelection().addRange(range);
 	},
 	onAddMultiRange: () => {
-		var strongs = document.getElementsByTagName("strong");
-		var s = window.getSelection();
-		for(var i = 0; i < strongs.length; i++) {
-			var range = document.createRange();
+		let strongs = document.getElementsByTagName("strong");
+		let s = window.getSelection();
+		for(let i = 0; i < strongs.length; i++) {
+			let range = document.createRange();
 			range.selectNode(strongs[i]);
 			s.addRange(range);
 		}
@@ -21,22 +21,36 @@ export default {
 		window.getSelection().removeRange(window.getSelection().getRangeAt(0));
 	},
 	onCopyInput: () => {
-
-	},
-	onCopyDataVisible: () => {
-
-	},
-	onCopyDataHidden: () => {
-		var s = window.getSelection();
-		var input = document.createElement("div");
-		input.setAttribute("contenteditable", true);
-		var text = document.createTextNode("I hear you are going to copy me4 !");
-		input.appendChild(text);
+		window.getSelection().removeAllRanges();
+		let range = document.createRange();
+		let text = document.getElementsByClassName("input-be-copied")[0].value;
+		let input = document.createElement("input");
+		input.setAttribute("value", text);
 		document.body.appendChild(input);
-		var range = document.createRange();
+		input.select(); // 使用input作为中介时，这句代码缺失，将复制失败
 		range.selectNode(input);
-		s.addRange(range);
+		window.getSelection().addRange(range);
 		document.execCommand("Copy");
 		document.body.removeChild(input);
+	},
+	onCopyDataVisible: () => {
+		window.getSelection().removeAllRanges();
+		let div = document.getElementsByClassName("div-be-copied")[0];
+		let range = document.createRange();
+		range.selectNode(div);
+		window.getSelection().addRange(range);
+		document.execCommand("Copy");
+	},
+	onCopyDataHidden: () => {
+		let s = window.getSelection();
+		s.removeAllRanges();
+		let div = document.createElement("div");
+		div.innerHTML = "我是隐蔽的DIV";
+		document.body.appendChild(div);
+		let range = document.createRange();
+		range.selectNode(div);
+		s.addRange(range);
+		document.execCommand("Copy");
+		document.body.removeChild(div);
 	},
 }

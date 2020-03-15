@@ -13,17 +13,21 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				use: [
-					'style-loader',
-					'css-loader'
-				]
-			},
-			{
 				test: /\.js$/,
-				loader: "babel-loader",
+				loaders: "babel-loader",
 				exclude: path.resolve(rootPath, "node-modules"),
 				include: rootPath
+			},
+			{
+				test: /\.css$/,
+				loaders: ['style-loader', 'css-loader']
+			},
+			{
+				test: /\.png|jpg|jpeg|gif|svg$/,
+				loaders: "url-loader",
+				options: {
+					limit: 1000
+				}
 			}
 		]
 	},
