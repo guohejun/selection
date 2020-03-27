@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="theme-color" content="#000000" />
+	<title>layout_two_columns</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		h3 {
+			margin: 10px 20px;
+		}
+		.parent {
+			background-color: #f5f5f5;
+			width: 100%; /*不要使用100vw,因为会将Y轴滚动条的宽度计算在内,进而会导致出现X轴滚动条*/
+			height: 100px;
+		}
+		.left {
+			background-color: #f00f8e;
+		}
+		.right {
+			background-color: #00c800;
+			padding: 20px;
+			border-left: 15px solid #999;
+		}
+		.right code {
+			color: #fff;
+		}
+		/*parent1*/
+		.parent1 .left {
+			float: left;
+			width: 300px;
+			height: 100%; /*没有达到100%,会导致right侵入到left下方*/
+		}
+		.parent1 .right {
+			height: 100%;
+			margin-left: 300px;
+		}
+		/*parent2*/
+		.parent2 .left {
+			width: 300px;
+			float: left;
+			height: 100%;
+		}
+		.parent2 .right {
+			overflow: hidden;
+			height: 100%;
+		}
+		/*parent3*/
+		.parent3 .left {
+			width: 300px;
+			float: left;
+			height: 100%;
+		}
+		.parent3 .right {
+			width: calc(100% - 300px);
+			float: right;
+			height: 100%;
+		}
+		/*parent4*/
+		.parent4 {
+			font-size: 0;
+		}
+		.parent4 .left {
+			display: inline-block;
+			width: 300px;
+			height: 100%;
+		}
+		.parent4 .right {
+			display: inline-block;
+			width: calc(100% - 300px);
+			height: 100%;
+		}
+		/*parent5*/
+		.parent5 {
+			display: flex;
+		}
+		.parent5 .left {
+			width: 300px;
+			height: 100%;
+		}
+		.parent5 .right {
+			flex: 1;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<h3>float:left+margin-left</h3>
+	<div class="parent parent1">
+		<div class="left"></div>
+		<div class="right">
+			<code>
+				.parent1 .left {
+				float: left;
+				width: 300px;
+				height: 100%; /*没有达到100%,会导致right侵入到left下方*/
+				}
+				.parent1 .right {
+				height: 100%;
+				margin-left: 300px;
+				}
+			</code>
+		</div>
+	</div>
+	<h3>float:left+overflow</h3>
+	<div class="parent parent2">
+		<div class="left"></div>
+		<div class="right">
+			<code>
+				.parent2 .left {
+				width: 300px;
+				float: left;
+				height: 100%;
+				}
+				.parent2 .right {
+				overflow: hidden;
+				height: 100%;
+				}
+			</code>
+		</div>
+	</div>
+	<h3>float:left + float:right + calc</h3>
+	<div class="parent parent3">
+		<div class="left"></div>
+		<div class="right">
+			<code>
+				.parent3 .left {
+				width: 300px;
+				float: left;
+				height: 100%;
+				}
+				.parent3 .right {
+				width: calc(100% - 300px);
+				float: right;
+				height: 100%;
+				}
+			</code>
+		</div>
+	</div>
+	<h3>inline-block + calc + font-size = 0</h3>
+	<div class="parent parent4">
+		<div class="left"></div>
+		<div class="right">
+			<code>
+				.parent4 {
+				font-size: 0;
+				}
+				.parent4 .left {
+				display: inline-block;
+				width: 300px;
+				height: 100%;
+				}
+				.parent4 .right {
+				display: inline-block;
+				width: calc(100% - 300px);
+				height: 100%;
+				}
+			</code>
+		</div>
+	</div>
+	<h3>flex</h3>
+	<div class="parent parent5">
+		<div class="left"></div>
+		<div class="right">
+			<code>
+				.parent5 {
+				display: flex;
+				}
+				.parent5 .left {
+				width: 300px;
+				height: 100%;
+				}
+				.parent5 .right {
+				flex: 1;
+				height: 100%;
+				}
+			</code>
+		</div>
+	</div>
+</body>
+</html>

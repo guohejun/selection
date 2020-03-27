@@ -36,7 +36,7 @@ export default {
 	onCopyDataVisible: () => {
 		window.getSelection().removeAllRanges();
 		let div = document.getElementsByClassName("div-be-copied")[0];
-		let range = document.createRange();
+		let range = document.createRange();re
 		range.selectNode(div);
 		window.getSelection().addRange(range);
 		document.execCommand("Copy");

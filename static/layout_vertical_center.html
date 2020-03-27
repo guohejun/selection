@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="theme-color" content="#000000" />
+	<title>layout_vertical_center</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		h3 {
+			margin: 10px 20px;
+		}
+		.box {
+			display: flex;
+			height: 200px;
+		}
+		.code {
+			flex: 1;
+			height:100%;
+			padding: 20px;
+			background-color: #f1f1f1;
+			border-left: 15px solid #999;
+		}
+		.code code {
+			margin: 0;
+		}
+		.parent {
+			width: 200px;
+			height:100%;
+			background-color: #f1f1f1;
+			text-align: center;
+		}
+		.child {
+			width: 80px;
+			height: 80px;
+			background-color: #f00f8e;
+			color: #fff;
+			text-align: center;
+			line-height: 80px;
+		}
+		/*parent1*/
+		.parent1 {
+			position: relative;
+		}
+		.parent1 .child {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		/*parent2*/
+		.parent2 {
+			position: relative;
+		}
+		.parent2 .child {
+			position: absolute;
+			top: 60px;
+			left: 60px;
+		}
+
+		/*parent3*/
+		.parent3:before {
+			display: table;
+			content: "";
+			clear: both;
+		}
+		.parent3 .child {
+			margin: 60px auto 0;
+		}
+
+		/*parent4*/
+		.parent4 {
+			position: relative;
+		}
+		.parent4 .child {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -40px;
+			margin-left: -40px;
+		}
+
+		/*parent5*/
+		.parent5 {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+	</style>
+</head>
+<body>
+	<h3>absolute：未知高度的垂直居中</h3>
+	<div class="box">
+		<div class="parent parent1">
+			<div class="child"></div>
+		</div>
+		<div class="code">
+			<code>.parent1 {
+	position: relative;
+}
+.parent1 .child {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+			</code>
+		</div>
+	</div>
+	<h3>absolute: 二分之一的父高度-子高度</h3>
+	<div class="box">
+		<div class="parent parent2">
+			parent
+			<div class="child">child</div>
+		</div>
+		<div class="code">
+			<code>.parent2 {
+	position: relative;
+}
+.parent2 .child {
+	position: absolute;
+	top: 60px;
+	left: 60px;
+}</code>
+		</div>
+	</div>
+	<h3>margin: 二分之一的父高度-子高度</h3>
+	<div class="box">
+		<div class="parent parent3">
+			<div class="child"></div>
+		</div>
+		<div class="code">
+			<code>.parent3:before {
+	display: table;
+	content: "";
+	clear: both;
+}
+.parent3 .child {
+	margin: 60px auto 0;
+}
+			</code>
+		</div>
+	</div>
+	<h3>absolute + -50% + margin -50% child w& h</h3>
+	<div class="box">
+		<div class="parent parent4">
+			<div class="child"></div>
+		</div>
+		<div class="code">
+			<code>.parent4 {
+	position: relative;
+}
+.parent4 .child {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -40px;
+	margin-left: -40px;
+}</code>
+		</div>
+	</div>
+	<h3>flex：未知高度的垂直居中</h3>
+	<div class="box">
+		<div class="parent parent5">
+			<div class="child"></div>
+		</div>
+		<div class="code">
+			<code>.parent5 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}</code>
+		</div>
+	</div>
+</body>
+</html>
