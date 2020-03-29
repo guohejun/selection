@@ -64,27 +64,13 @@
 		}
 		/*parent4*/
 		.parent4 {
-			font-size: 0;
+			display: flex;
 		}
 		.parent4 .left {
-			display: inline-block;
 			width: 300px;
 			height: 100%;
 		}
 		.parent4 .right {
-			display: inline-block;
-			width: calc(100% - 300px);
-			height: 100%;
-		}
-		/*parent5*/
-		.parent5 {
-			display: flex;
-		}
-		.parent5 .left {
-			width: 300px;
-			height: 100%;
-		}
-		.parent5 .right {
 			flex: 1;
 			height: 100%;
 		}
@@ -143,40 +129,19 @@
 			</code>
 		</div>
 	</div>
-	<h3>inline-block + calc + font-size = 0</h3>
+	<h3>flex</h3>
 	<div class="parent parent4">
 		<div class="left"></div>
 		<div class="right">
 			<code>
 				.parent4 {
-				font-size: 0;
+				display: flex;
 				}
 				.parent4 .left {
-				display: inline-block;
 				width: 300px;
 				height: 100%;
 				}
 				.parent4 .right {
-				display: inline-block;
-				width: calc(100% - 300px);
-				height: 100%;
-				}
-			</code>
-		</div>
-	</div>
-	<h3>flex</h3>
-	<div class="parent parent5">
-		<div class="left"></div>
-		<div class="right">
-			<code>
-				.parent5 {
-				display: flex;
-				}
-				.parent5 .left {
-				width: 300px;
-				height: 100%;
-				}
-				.parent5 .right {
 				flex: 1;
 				height: 100%;
 				}
